@@ -2,6 +2,7 @@
   - .txt|jinja
   - plots
   - codesamples
+  - monokai.sty|pyg
 
 plots:
   - .py|py:
@@ -10,4 +11,9 @@ plots:
     }
 
 codesamples:
+  - .py|pyg|forcelatex
   - .py
+
+monokai.sty|pyg:
+  - pyg: { 'ext' : '.sty' }
+  - contents: ' '
