@@ -1,0 +1,60 @@
+# Created by http://www.gitignore.io
+
+### Linux ###
+*~
+
+# KDE directory preferences
+.directory
+
+
+### LaTeX ###
+*.acn
+*.acr
+*.alg
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.fdb_latexmk
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lof
+*.log
+*.lot
+*.maf
+*.mtc
+*.mtc0
+*.nav
+*.nlo
+*.out
+*.pdfsync
+*.ps
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdy
+*.tdo
+
+# Dexy related ignores
+# Copied from https://github.com/ananelson/dexy-templates/blob/master/.gitignore
+artifacts/
+.cache/
+.dexy/
+dist/
+build/
+logs/
+output/
+output-long/
+output-site/
+output-latest.tgz
+*.pyc
+memory.log
+*.egg-info
+build/
+
