@@ -1,2 +1,13 @@
 .lyx|lyx|lyxjinja|jinja|latex:
   - .txt|jinja
+  - plots
+  - codesamples
+
+plots:
+  - .py|py:
+    - py: {
+      add-new-files: True
+    }
+
+codesamples:
+  - .py
