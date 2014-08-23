@@ -13,6 +13,7 @@
 Session.vim
 .netrwhist
 *~
+*.lyx#
 
 ### LaTeX ###
 *.acn
