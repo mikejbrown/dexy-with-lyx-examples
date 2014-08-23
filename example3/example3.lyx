@@ -1,0 +1,276 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\options sort&compress
+\use_default_options true
+\maintain_unincluded_children false
+\language australian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Lists
+\end_layout
+
+\begin_layout Standard
+This should be a list of items pulled from a data file:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{|c|c|c|}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<% for row in d['data.csv|lines']: -%>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+     <% set n = row['name'] %>
+\end_layout
+
+\begin_layout Plain Layout
+
+     <% set x = row['contents'].split(',')[0] %>
+\end_layout
+
+\begin_layout Plain Layout
+
+     <% set y = row['contents'].split(',')[1] %>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline << n >> & << x >> & << y >> 
+\backslash
+tabularnewline
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<% endfor %>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The magic is all in ERT:
+\end_layout
+
+\begin_layout Verbatim
+<% raw %>
+\end_layout
+
+\begin_layout Verbatim
+
+\backslash
+begin{tabular}{|c|c|c|}
+\end_layout
+
+\begin_layout Verbatim
+<% for row in d['data.csv|lines']: -%>
+\end_layout
+
+\begin_layout Verbatim
+    <% set n = row['name'] %>
+\end_layout
+
+\begin_layout Verbatim
+    <% set x = row['contents'].split(',')[0] %>
+\end_layout
+
+\begin_layout Verbatim
+    <% set y = row['contents'].split(',')[1] %>
+\end_layout
+
+\begin_layout Verbatim
+
+\backslash
+hline << n >> & << x >> & << y >> 
+\backslash
+tabularnewline
+\end_layout
+
+\begin_layout Verbatim
+<% endfor %>
+\end_layout
+
+\begin_layout Verbatim
+
+\backslash
+hline
+\end_layout
+
+\begin_layout Verbatim
+
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Verbatim
+<% endraw %>
+\end_layout
+
+\begin_layout Standard
+Note this is pretty much raw jinja-latex: there's not much advantage to
+ using LyX for this particular task.
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+|lines
+\begin_inset Quotes erd
+\end_inset
+
+ filter on the data file is important: without it dexy sends the file as
+ a flat string instead of one line at a time (and the d['data.csv'] object
+ does not have a split() method).
+ As it happens, the lines filter returns each row as a dictionary with 'name'
+ and 'contents' keys.
+\end_layout
+
+\end_body
+\end_document

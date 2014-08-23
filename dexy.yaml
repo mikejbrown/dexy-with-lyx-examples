@@ -3,6 +3,7 @@
   - plots
   - codesamples
   - monokai.sty|pyg
+  - data
 
 plots:
   - .py|py:
@@ -17,3 +18,6 @@ codesamples:
 monokai.sty|pyg:
   - pyg: { 'ext' : '.sty' }
   - contents: ' '
+
+data:
+  - .csv|lines
